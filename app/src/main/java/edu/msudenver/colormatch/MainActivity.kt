@@ -113,7 +113,6 @@ class MainActivity : AppCompatActivity(), View.OnLongClickListener {
 
     // TODO #6: delete the long tapped item after a yes/no confirmation dialog
     override fun onLongClick(view: View?): Boolean {
-
         class MyDialogInterfaceListener(val id: Int): DialogInterface.OnClickListener {
             override fun onClick(dialogInterface: DialogInterface?, which: Int) {
                 if (which == DialogInterface.BUTTON_POSITIVE) {
