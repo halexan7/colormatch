@@ -13,33 +13,69 @@
         android:gravity="center_horizontal">
 
         <TextView
-            android:id="@+id/txtTick"
+            android:id="@+id/txtTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Does the meaning match the text?"
             android:textSize="20dp"></TextView>
 
-        <Button
-            android:id="@+id/btnMeaning"
-            android:layout_width="150dp"
-            android:layout_height="150dp"
-            android:layout_below="@+id/txtTick"
-            android:layout_marginRight="5dp"></Button>
-
-        <Button
-            android:id="@+id/btnColor"
-            android:layout_width="150dp"
-            android:layout_height="150dp"
-            android:layout_below="@+id/txtTick"
-            android:layout_toRightOf="@id/btnMeaning"></Button>
-
-        <TextView
+        <GridLayout
+            android:id="@+id/gridLayout"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/btnMeaning"
-            android:text="Meaning">
+            android:layout_below="@+id/txtTitle"
+            android:columnCount="2">
 
-        </TextView>
+            <Button
+                android:id="@+id/btnMeaning"
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:layout_marginRight="5dp"></Button>
+
+            <Button
+                android:id="@+id/btnColor"
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:layout_toRightOf="@id/btnMeaning"></Button>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="top|center_horizontal"
+                android:textSize="20dp"
+                android:text="Meaning"></TextView>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="top|center_horizontal"
+                android:textSize="20dp"
+                android:text="Color"></TextView>
+
+            <Button
+                android:layout_gravity="top|center_horizontal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/btnYes"
+                android:text="Yes"></Button>
+
+            <Button
+                android:layout_gravity="top|center_horizontal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/btnNo"
+                android:text="No"></Button>
+
+        </GridLayout>
+
+        <TextView
+            android:id="@+id/txtTick"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/gridLayout"
+            android:layout_gravity="center_horizontal"></TextView>
+
+
 
     </RelativeLayout>
 </LinearLayout>

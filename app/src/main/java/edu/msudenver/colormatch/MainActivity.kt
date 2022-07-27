@@ -47,7 +47,7 @@ class MainActivity : AppCompatActivity(), View.OnLongClickListener {
             val score = scores[position]
             holder.txtScore.text = score.value.toString()
             holder.txtDate.text = DBHelper.USA_FORMAT.format(score.date)
-
+//            holder.image.
         }
 
         override fun getItemCount(): Int {

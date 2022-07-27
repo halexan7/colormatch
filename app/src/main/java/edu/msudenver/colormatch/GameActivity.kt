@@ -34,24 +34,37 @@ class GameActivity : AppCompatActivity(), OnColorMatchListener {
         val dbHelper = DBHelper(this)
         db = dbHelper.writableDatabase
 
-        // TODO #7: get references to the view objects (meaning and color buttons, yes and no buttons, tick text view)
+        // TODOd #7: get references to the view objects (meaning and color buttons, yes and no buttons, tick text view)
+        btnMeaning = findViewById(R.id.btnMeaning)
+        btnColor = findViewById(R.id.btnColor)
+        btnYes = findViewById(R.id.btnYes)
+        btnNo = findViewById(R.id.btnNo)
+        txtTick = findViewById(R.id.txtTick)
 
 
         // TODO #8: set the background of the meaning and color buttons to gray
-
+        btnMeaning?.setBackgroundColor(Color.parseColor("#808080"))
+        btnColor?.setBackgroundColor(Color.parseColor("#808080"))
 
         // TODO #9: instantiate a ColorMatch object with ColorMatch.DEFAULT_ROUNDS and suggestedLevel()
+        val game = ColorMatch(ColorMatch.DEFAULT_ROUNDS,suggestedLevel())
 
         // TODO #10: set the listener for your ColorMatch object to current activity
 
+
+
         // TODO #11: run ColorMatch's start as a coroutine the way explained in the instructions
+        val scope = CoroutineScope(Dispatchers.Main)
+        scope.launch {
+            game.start()
+        }
 
 
         // TODO #12: set onClickListener for the YES button and have it call ColorMatch's checkAnswer passing true
-
+        btnYes?.setOnClickListener{game.checkAnswer(true)}
 
         // TODO #13: set onClickListener for the NOT button and have it call ColorMatch's checkAnswer passing false
-
+        btnNo?.setOnClickListener {game.checkAnswer(false)}
     }
 
     // given to you (have fun)
