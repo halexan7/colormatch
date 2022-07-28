@@ -47,7 +47,14 @@ class MainActivity : AppCompatActivity(), View.OnLongClickListener {
             val score = scores[position]
             holder.txtScore.text = score.value.toString()
             holder.txtDate.text = DBHelper.USA_FORMAT.format(score.date)
-//            holder.image.
+
+            if (score.level == ColorMatch.LEVEL_HARD){
+                holder.image.setImageResource(R.drawable.level_hard)
+            }else if (score.level == ColorMatch.LEVEL_MEDIUM){
+                holder.image.setImageResource(R.drawable.level_medium)
+            }else{
+                holder.image.setImageResource(R.drawable.level_easy)
+            }
         }
 
         override fun getItemCount(): Int {

@@ -3,7 +3,7 @@ package edu.msudenver.colormatch
 /*
  * CS3013 - Mobile App Dev. - Summer 2022
  * Instructor: Thyago Mota
- * Student(s):
+ * Student(s): Horace Alexander
  * Description: App 03 - GameActivity (controller) class
  */
 
@@ -42,28 +42,28 @@ class GameActivity : AppCompatActivity(), OnColorMatchListener {
         txtTick = findViewById(R.id.txtTick)
 
 
-        // TODO #8: set the background of the meaning and color buttons to gray
+        // TODOd #8: set the background of the meaning and color buttons to gray
         btnMeaning?.setBackgroundColor(Color.parseColor("#808080"))
         btnColor?.setBackgroundColor(Color.parseColor("#808080"))
 
-        // TODO #9: instantiate a ColorMatch object with ColorMatch.DEFAULT_ROUNDS and suggestedLevel()
+        // TODOd #9: instantiate a ColorMatch object with ColorMatch.DEFAULT_ROUNDS and suggestedLevel()
         val game = ColorMatch(ColorMatch.DEFAULT_ROUNDS,suggestedLevel())
 
-        // TODO #10: set the listener for your ColorMatch object to current activity
+        // TODOd #10: set the listener for your ColorMatch object to current activity
+        game.setOnColorMatchListener(this)
 
 
-
-        // TODO #11: run ColorMatch's start as a coroutine the way explained in the instructions
+        // TODOd #11: run ColorMatch's start as a coroutine the way explained in the instructions
         val scope = CoroutineScope(Dispatchers.Main)
         scope.launch {
             game.start()
         }
 
 
-        // TODO #12: set onClickListener for the YES button and have it call ColorMatch's checkAnswer passing true
+        // TODOd #12: set onClickListener for the YES button and have it call ColorMatch's checkAnswer passing true
         btnYes?.setOnClickListener{game.checkAnswer(true)}
 
-        // TODO #13: set onClickListener for the NOT button and have it call ColorMatch's checkAnswer passing false
+        // TODOd #13: set onClickListener for the NOT button and have it call ColorMatch's checkAnswer passing false
         btnNo?.setOnClickListener {game.checkAnswer(false)}
     }
 
@@ -100,7 +100,7 @@ class GameActivity : AppCompatActivity(), OnColorMatchListener {
         }
     }
 
-    // TODO #14: update the views (buttons meaning and color)
+    // TODOd #14: update the views (buttons meaning and color)
     // use setTextColor to change a button's color
     // remember, a challenge is a pair containing the meaning and the color
     // the meaning is a pair with the name of a color (text) and how it should be displayed (color)
@@ -111,30 +111,35 @@ class GameActivity : AppCompatActivity(), OnColorMatchListener {
         round: Int,
         challenge: Pair<Pair<String, String>, Pair<String, String>>
     ) {
+        btnMeaning?.text = challenge.first.first
+        btnColor?.text = challenge.second.first
 
+        btnMeaning?.setTextColor(ColorMatch.COLOR_MAP[challenge.first.second]!!)
+        btnColor?.setTextColor(ColorMatch.COLOR_MAP[challenge.second.second]!!)
     }
 
-    // TODO #15: update the view (tick text)
+    // TODOd #15: update the view (tick text)
     override fun onColorMatchTick(secondsLeft: Int) {
+        txtTick?.text = secondsLeft.toString()
     }
 
     // TODO #16: update the database with the score; call finish to resume to main activity
     override fun onColorMatchGameOver(score: Double) {
-        try {
-
-            )
-            Toast.makeText(
-                this,
-                "Your score of ${score} was recorded!",
-                Toast.LENGTH_SHORT
-            ).show()
-        } catch (ex: Exception) {
-            Toast.makeText(
-                this,
-                "Exception when trying to record your score!",
-                Toast.LENGTH_SHORT
-            ).show()
-        }
-        finish()
+//        try {
+//
+//            )
+//            Toast.makeText(
+//                this,
+//                "Your score of ${score} was recorded!",
+//                Toast.LENGTH_SHORT
+//            ).show()
+//        } catch (ex: Exception) {
+//            Toast.makeText(
+//                this,
+//                "Exception when trying to record your score!",
+//                Toast.LENGTH_SHORT
+//            ).show()
+//        }
+//        finish()
     }
 }

@@ -3,7 +3,7 @@ package edu.msudenver.colormatch
 /*
  * CS3013 - Mobile App Dev. - Summer 2022
  * Instructor: Thyago Mota
- * Student(s):
+ * Student(s): Horace Alexander
  * Description: App 03 - ColorMatch (model) class
  */
 
